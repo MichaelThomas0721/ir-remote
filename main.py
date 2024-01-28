@@ -51,24 +51,22 @@ def on_ir_receive(pinNo, bouncetime=150):
 def destroy():
     GPIO.cleanup()
 
+def on_edge_detected(channel):
+    code = on_ir_receive(channel)
+    if code:
+        print(str(hex(code)))
+    else:
+        print("Invalid code")
+
 
 if __name__ == "__main__":
     setup()
     try:
         print("Starting IR Listener")
+        GPIO.add_event_detect(8, GPIO.FALLING, callback=on_edge_detected)
         while True:
-            print("Waiting for signal")
-            GPIO.wait_for_edge(8, GPIO.FALLING)
-            code = on_ir_receive(8)
-            if code:
-                print(str(hex(code)))
-            else:
-                print("Invalid code")
+            time.sleep(1)  # wait here so that the program doesn't end immediately
     except KeyboardInterrupt:
-        pass
-    except RuntimeError:
-        # this gets thrown when control C gets pressed
-        # because wait_for_edge doesn't properly pass this on
         pass
     print("Quitting")
     destroy()
