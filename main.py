@@ -3,7 +3,7 @@ from time import time
 
 def setup():
     GPIO.setmode(GPIO.BOARD)  # Numbers GPIOs by physical location
-    GPIO.setup(11, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+    GPIO.setup(8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 
 def binary_aquire(pin, duration):
@@ -58,8 +58,8 @@ if __name__ == "__main__":
         print("Starting IR Listener")
         while True:
             print("Waiting for signal")
-            GPIO.wait_for_edge(11, GPIO.FALLING)
-            code = on_ir_receive(11)
+            GPIO.wait_for_edge(8, GPIO.FALLING)
+            code = on_ir_receive(8)
             if code:
                 print(str(hex(code)))
             else:
