@@ -11,7 +11,7 @@ from datetime import datetime
 
 # Static program vars
 pin = 8  # Input pin of sensor (GPIO.BOARD)
-Buttons = [0x300ff9867L, 0x300ffd827L, 0x300ff8877L, 0x300ffa857L, 0x300ffe817L, 0x300ff48b7L, 0x300ff6897L, 0x300ff02fdL, 0x300ff32cdL, 0x300ff20dfL]  # HEX code list
+# Buttons = [0x300ff9867L, 0x300ffd827L, 0x300ff8877L, 0x300ffa857L, 0x300ffe817L, 0x300ff48b7L, 0x300ff6897L, 0x300ff02fdL, 0x300ff32cdL, 0x300ff20dfL]  # HEX code list
 ButtonsNames = ["RED",   "GREEN",      "BLUE",       "WHITE",      "DARK ORANGE", "LIGHT GREEN",
     "DARK BLUE",  "VIBRANT ORANGE", "LIGHT BLUE", "DARK PURPLE"]  # String list in same order as HEX list
 
@@ -80,7 +80,8 @@ def convertHex(binaryValue):
 	
 while True:
 	inData = convertHex(getBinary()) #Runs subs to get incoming hex value
-	for button in range(len(Buttons)):#Runs through every value in list
-		if hex(Buttons[button]) == inData: #Checks this against incoming
-			print(ButtonsNames[button]) #Prints corresponding english name for button
+	print(inData)
+	# for button in range(len(Buttons)):#Runs through every value in list
+	# 	if hex(Buttons[button]) == inData: #Checks this against incoming
+	# 		print(ButtonsNames[button]) #Prints corresponding english name for button
 			
