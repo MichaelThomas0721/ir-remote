@@ -16,7 +16,8 @@ def setupGPIO():
 
 
 def getTemperature():
-    return 1
+    temp = os.popen("./testfile.txt").read()
+    return temp
 
 
 class MyServer(BaseHTTPRequestHandler):
