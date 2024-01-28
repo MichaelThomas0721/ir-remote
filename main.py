@@ -1,5 +1,5 @@
 import RPi.GPIO as GPIO
-from time import time
+import time
 
 def setup():
     GPIO.setmode(GPIO.BOARD)  # Numbers GPIOs by physical location
