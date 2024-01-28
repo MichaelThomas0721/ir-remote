@@ -4,7 +4,7 @@ from time import time
 # Numbers GPIOs by physical location
 GPIO.setmode(GPIO.BOARD)
 # set pin 11 as an input pin with default as LOW v
-GPIO.setup(14, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
+GPIO.setup(8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # define a function to acquire data
 def binary_acquire(pin, duration):
