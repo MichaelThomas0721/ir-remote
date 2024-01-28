@@ -49,7 +49,7 @@ class MyServer(BaseHTTPRequestHandler):
         '''
         temp = getTemperature()
         self.do_HEAD()
-        self.wfile.write(html.format(temp[5:]).encode("utf-8"))
+        self.wfile.write(html.format(temp).encode("utf-8"))
 
     def do_POST(self):
 
