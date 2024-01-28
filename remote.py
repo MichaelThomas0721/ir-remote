@@ -6,7 +6,7 @@ import json
 keys = {}
 
 while True:
-    data = decode(receive(22))
+    data = decode(receive(8))
     if data:
         break
 keys['keyname'] = data
