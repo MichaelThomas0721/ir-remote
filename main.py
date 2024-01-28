@@ -55,6 +55,9 @@ def destroy():
 def on_edge_detected(channel):
     code = on_ir_receive(channel)
     if code:
+        with open('decoded_ir_signal.txt', 'w') as file:
+            # Write the decoded IR signal to the file
+            file.write(str(code))
         print(str((code)))
     else:
         print("Invalid code")
