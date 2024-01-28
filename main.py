@@ -66,7 +66,7 @@ if __name__ == "__main__":
         print("Starting IR Listener")
         GPIO.add_event_detect(8, GPIO.FALLING, callback=on_edge_detected)
         while True:
-            t.sleep(1)  # wait here so that the program doesn't end immediately
+            t.sleep(0.1)  # wait here so that the program doesn't end immediately
     except KeyboardInterrupt:
         pass
     print("Quitting")
