@@ -49,9 +49,10 @@ def getSequence():
         value = GPIO.input(pin)
     return sequence
 
-def testDef():
-    print("BRUV")
 
-
-while True:
-    print(getSequence())
+def recordSequence():
+    while True:
+        sequence = getSequence()
+        if sequence:
+            print(getSequence())
+            return sequence
