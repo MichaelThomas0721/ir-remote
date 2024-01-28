@@ -3,7 +3,7 @@ from time import time
 
 # Numbers GPIOs by physical location
 GPIO.setmode(GPIO.BOARD)
-# set pin 11 as an input pin with default as LOW v
+# set pin 8 as an input pin with default as LOW v
 GPIO.setup(8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # define a function to acquire data
@@ -17,7 +17,7 @@ def binary_acquire(pin, duration):
 
 print("Acquiring data for 1 second")
 # acquire data for 1 second
-results = binary_acquire(11, 1.0)
+results = binary_acquire(8, 1.0) # changed pin number to 8
 print("Done!")
 print(",".join([str(result) for result in results]))
 GPIO.cleanup()
