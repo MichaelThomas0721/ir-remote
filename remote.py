@@ -12,6 +12,7 @@ import time
 
 # Static program vars
 pin = 8  # Input pin of sensor (GPIO.BOARD)
+pinOut = 3
 # Buttons = [0x300ff9867L, 0x300ffd827L, 0x300ff8877L, 0x300ffa857L, 0x300ffe817L, 0x300ff48b7L, 0x300ff6897L, 0x300ff02fdL, 0x300ff32cdL, 0x300ff20dfL]  # HEX code list
 ButtonsNames = ["RED",   "GREEN",      "BLUE",       "WHITE",      "DARK ORANGE", "LIGHT GREEN",
     "DARK BLUE",  "VIBRANT ORANGE", "LIGHT BLUE", "DARK PURPLE"]  # String list in same order as HEX list
@@ -19,12 +20,13 @@ ButtonsNames = ["RED",   "GREEN",      "BLUE",       "WHITE",      "DARK ORANGE"
 # Sets up GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(pin, GPIO.IN)
+GPIO.setup(pinOut, GPIO.OUT)
 
 # Gets binary value
 
 def outputSignal(sequence):
     for state, duration in sequence:
-        GPIO.output(3, state)
+        GPIO.output(pinOut, state)
         time.sleep(duration / 1000000.0)  # Convert microseconds to seconds
 
 
