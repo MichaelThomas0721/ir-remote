@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
-import time
+from time import time
+import time as t
 
 # Set the GPIO mode
 GPIO.setmode(GPIO.BOARD)
@@ -67,7 +68,7 @@ GPIO.add_event_detect(IR_SENSOR_PIN, GPIO.BOTH, callback=ir_callback)
 try:
     # Use a loop to keep the script running
     while True:
-        time.sleep(1)
+        t.sleep(1)
 except KeyboardInterrupt:
     # When Ctrl+C is pressed, the script will quit
     GPIO.cleanup()
