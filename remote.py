@@ -76,6 +76,7 @@ def getBinary():
 	
 # Convert value to hex
 def convertHex(binaryValue):
+	print(binaryValue)
 	tmpB2 = int(str(binaryValue),2) #Temporarely propper base 2
 	return hex(tmpB2)
 	
