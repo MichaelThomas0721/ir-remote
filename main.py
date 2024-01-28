@@ -19,5 +19,5 @@ print("Acquiring data for 1 second")
 # acquire data for 1 second
 results = binary_acquire(11, 1.0)
 print("Done!")
-print(",".join([str(result) for result in results])
+print(",".join([str(result) for result in results]))
 GPIO.cleanup()
