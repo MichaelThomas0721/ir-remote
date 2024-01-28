@@ -2,12 +2,14 @@ from typing import Union
 
 from fastapi import FastAPI
 
+from get_signal import getSequence
+
 app = FastAPI()
 
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"test": getSequence}
 
 
 # @app.get("/items/{item_id}")
