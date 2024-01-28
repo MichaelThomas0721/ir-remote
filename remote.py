@@ -60,7 +60,7 @@ def getBinary():
 		# Re-reads pin
 		previousValue = value
 		value = GPIO.input(pin)
-		
+	print("COMMAND", command)
 	# Converts times to binary
 	for (typ, tme) in command:
 		if typ == 1: #If looking at rest period
