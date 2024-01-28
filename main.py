@@ -7,17 +7,16 @@ GPIO.setmode(GPIO.BOARD)
 GPIO.setup(8, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # define a function to acquire data
-def binary_acquire(pin, duration):
+def binary_acquire(pin):
     # acquires data as quickly as possible
-    t0 = time() # time is in seconds here
-    results = []
-    while (time() - t0) < duration:
-        results.append(GPIO.input(pin))
-    return results
+    while True:
+        result = GPIO.input(pin)
+        if result:
+            return result
 
-print("Acquiring data for 1 second")
-# acquire data for 1 second
-results = binary_acquire(8, 1.0) # changed pin number to 8
-print("Done!")
-print(",".join([str(result) for result in results]))
+print("Waiting for input...")
+# acquire data
+result = binary_acquire(8) # changed pin number to 8
+print("Input received!")
+print(result)
 GPIO.cleanup()
