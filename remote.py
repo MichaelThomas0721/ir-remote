@@ -8,6 +8,7 @@
 # Imports modules
 import RPi.GPIO as GPIO
 from datetime import datetime
+import time
 
 # Static program vars
 pin = 8  # Input pin of sensor (GPIO.BOARD)
@@ -32,7 +33,7 @@ def getBinary():
 
 	# Waits for the sensor to pull pin low
 	while value:
-		sleep(0.0001) # This sleep decreases CPU utilization immensely
+		time.sleep(0.0001) # This sleep decreases CPU utilization immensely
 		value = GPIO.input(pin)
 		
 	# Records start time
