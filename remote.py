@@ -11,6 +11,8 @@ IR_SENSOR_PIN = 8
 GPIO.setup(IR_SENSOR_PIN, GPIO.IN)
 
 def ir_callback(channel):
+    with open('signal_data.txt', 'a') as f:
+        f.write("IR signal received at " + time.ctime() + "\n")
     print("IR signal received")
 
 # When a change is detected on the IR_SENSOR_PIN, the ir_callback function will be run
