@@ -15,6 +15,20 @@ def binary_aquire(pin, duration):
         results.append(GPIO.input(pin))
     return results
 
+def send_ir_signal(bin_signal, pin):
+    GPIO.setup(pin, GPIO.OUT)
+    pwm = GPIO.PWM(pin, 38000)  # 38kHz frequency
+    pwm.start(0)  # start PWM with 0% duty cycle
+
+    for bit in bin_signal:
+        if bit == '1':
+            pwm.ChangeDutyCycle(50)  # send "mark"
+        else:
+            pwm.ChangeDutyCycle(0)  # send "space"
+        time.sleep(0.0005)  # wait for a standard duration
+
+    pwm.stop()  # stop the PWM signal
+
 
 def on_ir_receive(pinNo, bouncetime=150):
     # when edge detect is called (which requires less CPU than constant
@@ -43,10 +57,14 @@ def on_ir_receive(pinNo, bouncetime=150):
         elif 1000 < us < 2000:
             outbin += "1"
     try:
+        bin_signal = bin(int(outbin, 2))[2:]  # convert to binary string
+        send_ir_signal(bin_signal, 3)  # send the IR signal using the transmitter on pin 3
         return int(outbin, 2)
     except ValueError:
         # probably an empty code
         return None
+
+    send_ir_signal(bin_signal, 3)
 
 
 def destroy():
