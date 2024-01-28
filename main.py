@@ -16,13 +16,12 @@ def binary_aquire(pin, duration):
     return results
 
 def send_ir_signal(bin_signal, pin):
+    global pwm
     GPIO.setup(pin, GPIO.OUT)
-    
-    # Check if a PWM instance already exists for this pin
-    if GPIO.PWM.instances.get(pin):
-        GPIO.PWM.instances[pin].stop()  # stop the existing PWM instance
 
-    pwm = GPIO.PWM(pin, 38000)  # 38kHz frequency
+    if pwm is None:
+        pwm = GPIO.PWM(pin, 38000)  # 38kHz frequency
+
     pwm.start(0)  # start PWM with 0% duty cycle
 
     for bit in bin_signal:
