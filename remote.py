@@ -22,6 +22,11 @@ GPIO.setup(pin, GPIO.IN)
 
 # Gets binary value
 
+def outputSignal(sequence):
+    for state, duration in sequence:
+        GPIO.output(3, state)
+        time.sleep(duration / 1000000.0)  # Convert microseconds to seconds
+
 
 def getBinary():
 	# Internal vars
@@ -61,6 +66,7 @@ def getBinary():
 		previousValue = value
 		value = GPIO.input(pin)
 	print("COMMAND", command)
+	outputSignal(command)
 	# Converts times to binary
 	for (typ, tme) in command:
 		if typ == 1: #If looking at rest period
