@@ -16,8 +16,7 @@ def setupGPIO():
 
 
 def getTemperature():
-    temp = os.popen("/opt/vc/bin/vcgencmd measure_temp").read()
-    return temp
+    return 1
 
 
 class MyServer(BaseHTTPRequestHandler):
