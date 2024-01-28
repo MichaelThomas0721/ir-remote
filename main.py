@@ -55,7 +55,7 @@ def destroy():
 def on_edge_detected(channel):
     code = on_ir_receive(channel)
     if code:
-        print(str(hex(code)))
+        print(str((code)))
     else:
         print("Invalid code")
 
