@@ -1,19 +1,31 @@
-<pre id="output"></pre>
-<script>
-    var output = document.getElementById('output');
-    var xhr = new XMLHttpRequest();
+<body>
+    <h1>IR Remote Web Interface</h1>
 
-    xhr.onload = function () {
-        console.log(xhr.responseText);
-        output.textContent = xhr.responseText;
-        setTimeout(500);
+    <pre id="output"></pre>
+    <script>
+        var output = document.getElementById('output');
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function () {
+            console.log(xhr.responseText);
+            output.textContent = xhr.responseText;
+            setTimeout(500);
+            SendXHR();
+        }
+
+        function SendXHR() {
+            xhr.open('GET', '{{ url_for('stream') }}');
+            xhr.send();
+        }
+
         SendXHR();
-    }
 
-    function SendXHR() {
-        xhr.open('GET', '{{ url_for('stream') }}');
-        xhr.send();
-    }
-
-    SendXHR();
-</script>
+        function StartRecording() {
+            let tempXhr = new XMLHttpRequest();
+            tempXhr.onload = function () {
+                console.log(tempXhr.responseText);
+            }
+            tempXhr.open('GET', '{{ url_for('start_recording')}}')
+        }
+    </script>
+</body>

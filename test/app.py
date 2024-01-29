@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Response
-from databaseSetup import SetupDatabase, GetData, InsertData
+from database import SetupDatabase, GetData, InsertData
 import sqlite3
 import time
 
@@ -25,6 +25,12 @@ def stream():
     res = generate()
     print("RES", res)
     return Response(res, mimetype='text/plain')
+
+@app.route('/start_recording')
+def start_recording():
+    # This is where the ir receiver function would be called
+    print("START RECORDING")
+    return Response("bruv", mimetype='text/plain');
 
 if __name__ == "__main__":
     app.run()
