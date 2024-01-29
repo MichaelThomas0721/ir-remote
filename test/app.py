@@ -1,29 +1,26 @@
 from flask import Flask, render_template, Response
 from database import SetupDatabase, GetData, InsertData
 import sqlite3
+import json
 import time
 
 app = Flask(__name__)
 SetupDatabase()
-print(GetData())
-InsertData("SIUFDSIUF")
+print(GetData("pending"))
+InsertData("pending", "SIUFDSIUF")
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
 def generate():
-    with open('job.log') as f:
-        lines = f.readlines()
-        print(lines)
-        for line in lines:
-            yield line
-    time.sleep(1)
+    data = GetData("pending")
+    data = json.dumps(data)
+    return data
 
 @app.route('/stream')
 def stream():
     res = generate()
-    print("RES", res)
     return Response(res, mimetype='text/plain')
 
 @app.route('/start_recording')

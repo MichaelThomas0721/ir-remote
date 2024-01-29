@@ -1,15 +1,15 @@
 <body>
     <h1>IR Remote Web Interface</h1>
-
+    <h3>Pending Sequences</h3>
     <pre id="output"></pre>
+    <button onclick="StartRecording()">Start Recording</button>
     <script>
         var output = document.getElementById('output');
         var xhr = new XMLHttpRequest();
 
         xhr.onload = function () {
-            console.log(xhr.responseText);
             output.textContent = xhr.responseText;
-            setTimeout(500);
+            setTimeout(1000);
             SendXHR();
         }
 
@@ -18,14 +18,14 @@
             xhr.send();
         }
 
-        SendXHR();
-
         function StartRecording() {
+            SendXHR();
             let tempXhr = new XMLHttpRequest();
             tempXhr.onload = function () {
                 console.log(tempXhr.responseText);
             }
             tempXhr.open('GET', '{{ url_for('start_recording')}}')
+            tempXhr.send()
         }
     </script>
 </body>

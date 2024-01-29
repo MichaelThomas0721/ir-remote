@@ -16,15 +16,15 @@ def SetupDatabase():
         sql = 'create table if not exists ' + name + ' (id integer primary key, sequence varchar(20), date datetime default current_timestamp)'
         c.execute(sql)
 
-def InsertData(sequence):
+def InsertData(table, data):
     conn, c = ConnectToDatabase()
 
-    sql = 'insert into ' + table_names[0] + ' (sequence) values("' + sequence + '");'
+    sql = 'insert into ' + table + ' (sequence) values("' + data + '");'
     c.execute(sql)
     conn.commit()
 
-def GetData():
+def GetData(table):
     conn, c = ConnectToDatabase()
 
-    c.execute("SELECT * FROM " + table_names[0])
+    c.execute("SELECT * FROM " + table)
     return c.fetchall()
