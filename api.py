@@ -2,14 +2,15 @@ from typing import Union
 
 from fastapi import FastAPI
 
-from get_signal import getSequence
+from get_signal import recordSequence
 
 app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return {"test": getSequence}
+async def read_root():
+    sequence = await recordSequence()
+    return {"test": sequence}
 
 
 # @app.get("/items/{item_id}")

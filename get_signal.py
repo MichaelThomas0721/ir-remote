@@ -50,7 +50,7 @@ def getSequence():
     return sequence
 
 
-def recordSequence():
+async def recordSequence():
     while True:
         sequence = getSequence()
         if sequence:
