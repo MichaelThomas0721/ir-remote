@@ -5,7 +5,7 @@ import os
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 host_name = '192.168.86.36'  # IP Address of Raspberry Pi
-host_port = 8000
+host_port = 8001
 
 
 def setupGPIO():
