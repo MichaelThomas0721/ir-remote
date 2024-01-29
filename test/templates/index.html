@@ -23,6 +23,7 @@
             let tempXhr = new XMLHttpRequest();
             tempXhr.onload = function () {
                 console.log(tempXhr.responseText);
+                setTimeout(1000);
             }
             tempXhr.open('GET', '{{ url_for('start_recording')}}')
             tempXhr.send()
