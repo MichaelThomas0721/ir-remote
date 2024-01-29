@@ -1,0 +1,19 @@
+<pre id="output"></pre>
+<script>
+    var output = document.getElementById('output');
+    var xhr = new XMLHttpRequest();
+
+    xhr.onload = function () {
+        console.log(xhr.responseText);
+        output.textContent = xhr.responseText;
+        setTimeout(500);
+        SendXHR();
+    }
+
+    function SendXHR() {
+        xhr.open('GET', '{{ url_for('stream') }}');
+        xhr.send();
+    }
+
+    SendXHR();
+</script>
