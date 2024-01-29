@@ -1,11 +1,14 @@
-export default {
-  plugins: [],
+const production = !process.env.ROLLUP_WATCH;
+
+module.exports = {
+  content: ['./public/index.html', './src/**/*.svelte'],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
-  content: ['./src/**/*.{html,js,svelte,ts}'],
-  variants: {
-    extend: {},
+  plugins: [],
+  future: {
+    purgeLayersByDefault: true,
+    removeDeprecatedGapUtilities: true,
   },
-  darkmode: false, // or 'media' or 'class'
-}
+};

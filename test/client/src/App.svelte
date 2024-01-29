@@ -1,5 +1,4 @@
 <script>
-	import "../src/styles/index.css"
 	export let name;
 	let pendings = [];
 
@@ -32,7 +31,7 @@
 </script>
 
 <main>
-	<h1 class="bg-blue-500">Hello {name}!</h1>
+	<h1 class="bg-blue-500">Hello adfadf{name}!</h1>
 	<p>
 		Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn
 		how to build Svelte apps.
@@ -47,8 +46,8 @@
 	</div>
 </main>
 
-<style lang="postcss">
-	@tailwind base;
+<style lang="postcss" global>
+    @tailwind base;
     @tailwind components;
     @tailwind utilities;
 	main {
