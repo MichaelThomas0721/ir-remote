@@ -15,7 +15,12 @@
   "bugs": {
     "url": "https://github.com/fuzzc0re/tailwindcss-svelte-typescript-rollup/issues"
   },
-  "keywords": ["svelte", "typescript", "tailwindcss", "rollup"],
+  "keywords": [
+    "svelte",
+    "typescript",
+    "tailwindcss",
+    "rollup"
+  ],
   "homepage": "https://github.com/fuzzc0re/tailwindcss-svelte-typescript-rollup/README.md",
   "main": "public/build/index.js",
   "scripts": {
@@ -29,10 +34,13 @@
     "preversion": "npm-run-all -s lint format"
   },
   "dependencies": {
+    "@svelteuidev/composables": "^0.15.4",
+    "@svelteuidev/core": "^0.15.4",
     "svelte": "^3.38.2",
     "svelte-spa-router": "^3.2.0"
   },
   "devDependencies": {
+    "@rgossiaux/svelte-headlessui": "^2.0.0",
     "@rollup/plugin-commonjs": "^21.0.1",
     "@rollup/plugin-html": "^0.2.4",
     "@rollup/plugin-node-resolve": "^13.0.0",
@@ -42,6 +50,7 @@
     "@typescript-eslint/parser": "^5.9.0",
     "autoprefixer": "^10.4.2",
     "cross-env": "^7.0.3",
+    "daisyui": "^4.6.1",
     "eslint": "^8.6.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-import": "^2.25.4",

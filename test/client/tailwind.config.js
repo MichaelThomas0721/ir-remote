@@ -6,9 +6,12 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
   future: {
     purgeLayersByDefault: true,
     removeDeprecatedGapUtilities: true,
+  },
+  daisyui: {
+    themes: ["dracula"],
   },
 };
