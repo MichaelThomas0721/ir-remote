@@ -1,11 +1,12 @@
 <html>
   <script>
     async function RecordInput() {
-      const sequence = await fetch("http://192.168.86.36:8000/");
+      console.log("BUERUREHR_");
+      const sequence = await fetch("http://192.168.86.36:8001/");
       console.log(sequence.json());
     }
   </script>
   <body>
-    <button onclick="RecordInput">Record Input</button>
+    <button onclick="RecordInput()">Record Input</button>
   </body>
 </html>
