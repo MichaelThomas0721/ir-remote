@@ -10,7 +10,7 @@
   xhr.onload = function () {
     // output.textContent = xhr.responseText;
     pendings = JSON.parse(xhr.responseText);
-    setTimeout(() => SendXHR(), 1000);
+    // setTimeout(() => SendXHR(), 1000);
   };
 
   function SendXHR() {
@@ -35,6 +35,13 @@
     selectedPending = id;
     document.getElementById('pendingModal').showModal();
   }
+
+  function SavePending() {
+    name = document.getElementById('pendingName').value;
+    console.log(name);
+  }
+
+  function DeletePending() {}
 </script>
 
 <main class="flex flex-col items-center justify-center w-fit">
@@ -56,13 +63,18 @@
   </div>
 
   <dialog id="pendingModal" class="modal">
-    <div class="modal-box">
+    <div class="modal-box flex flex-col gap-3 items-center">
       <h3 class="font-bold text-lg">Name Pending IR Signal</h3>
       <input
         type="text"
+        id="pendingName"
         placeholder="{pendings?.[selectedPending]?.[2]}"
         class="input input-bordered input-secondary w-full max-w-xs"
       />
+      <span class="flex flex-row justify-around gap-3 w-full">
+        <button class="btn btn-success" on:click="{SavePending}">Save</button>
+        <button class="btn btn-error" on:click="{DeletePending}">Delete</button>
+      </span>
     </div>
     <form method="dialog" class="modal-backdrop">
       <button>close</button>
@@ -70,7 +82,7 @@
   </dialog>
 </main>
 
-<style lang="css">
+<style lang="postcss" global>
   @tailwind base;
   @tailwind components;
   @tailwind utilities;

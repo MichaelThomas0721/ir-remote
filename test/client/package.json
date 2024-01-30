@@ -25,9 +25,9 @@
   "main": "public/build/index.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development rollup -c -w",
+    "test": "cross-env NODE_ENV=development rollup -c -w --host --port 5173",
     "build": "cross-env NODE_ENV=production rollup -c",
     "validate": "svelte-check",
-    "test": "jest --config jest.config.json",
     "format": "prettier --write src",
     "lint": "eslint --ext .js,.ts,.svelte src",
     "prepublishOnly": "npm-run-all -s test lint",
