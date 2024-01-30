@@ -1,0 +1,1 @@
+(python3 server.py &) && (cd client; source ~/.nvm/nvm.sh; nvm use --lts; npm run start;)

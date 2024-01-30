@@ -35,6 +35,7 @@ export default {
         },
         postcss: {
           plugins: [require('tailwindcss'), require('autoprefixer')],
+          css: { includePaths: ['src', 'src/styles'] },
         },
       }),
       compilerOptions: {
