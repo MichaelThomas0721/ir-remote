@@ -1,5 +1,5 @@
 from flask import Flask, render_template, Response, send_from_directory
-from database import SetupDatabase, GetData, InsertData
+from database import SetupDatabase, GetData, InsertSequenceData, RunSql, SaveSequence
 import sqlite3
 import json
 import time
@@ -8,7 +8,7 @@ import random
 app = Flask(__name__)
 SetupDatabase()
 print(GetData("pending"))
-InsertData("pending", "SIUFDSIUF")
+InsertSequenceData("pending", "SIUFDSIUF")
 
 # Path for our main Svelte page
 @app.route("/")
@@ -36,15 +36,12 @@ def start_recording():
     print("START RECORDING")
     return Response("bruv", mimetype='text/plain');
 
-# Path for all the static files (compiled JS/CSS, etc.)
-# @app.route("/<path:path>")
-# def home(path):
-#     return send_from_directory('client/public', path)
+@app.route('/pending_sequence/<sequence_id>', methods = ['POST', 'DELETE'])
+def pending_sequence(sequence_id, ):
+    if request.method == 'POST':
+        sequence = GetSequence(sequence_id)
+        SaveSequence(sequences, )
 
-
-@app.route("/rand")
-def hello():
-    return str(random.randint(0, 100))
 
 
 if __name__ == "__main__":
