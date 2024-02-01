@@ -1,6 +1,7 @@
 <script>
   import { Button } from '@svelteuidev/core';
   import Pending from './components/Pending.svelte';
+  import SendDataToFlask from './lib/send-to-flask';
   let pendings = [];
 
   let selectedPending = 0;
@@ -36,9 +37,16 @@
     document.getElementById('pendingModal').showModal();
   }
 
-  function SavePending() {
+  async function SavePending() {
     name = document.getElementById('pendingName').value;
-    console.log(name);
+    const data = {
+      sequence_id: selectedPending,
+      name: name
+    }
+    const res = await SendDataToFlask(data, "/save_sequence")
+    console.log("BRU")
+    console.log(document.getElementById('pendingModal').classList)
+    document.getElementById('modalClose').click();
   }
 
   function DeletePending() {}
@@ -77,7 +85,7 @@
       </span>
     </div>
     <form method="dialog" class="modal-backdrop">
-      <button>close</button>
+      <button id="modalClose">close</button>
     </form>
   </dialog>
 </main>

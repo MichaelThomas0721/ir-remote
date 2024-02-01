@@ -1,5 +1,5 @@
-from flask import Flask, render_template, Response, send_from_directory
-from database import SetupDatabase, GetData, InsertSequenceData, RunSql, SaveSequence
+from flask import Flask, request, jsonify, render_template, Response, send_from_directory
+from database import SetupDatabase, GetData, InsertSequenceData, RunSql, SaveSequence, GetPendingSequence, GetAllSequences
 import sqlite3
 import json
 import time
@@ -8,7 +8,7 @@ import random
 app = Flask(__name__)
 SetupDatabase()
 print(GetData("pending"))
-InsertSequenceData("pending", "SIUFDSIUF")
+# InsertSequenceData("pending", "SIUFDSIUF")
 
 # Path for our main Svelte page
 @app.route("/")
@@ -36,11 +36,15 @@ def start_recording():
     print("START RECORDING")
     return Response("bruv", mimetype='text/plain');
 
-@app.route('/pending_sequence/<sequence_id>', methods = ['POST', 'DELETE'])
-def pending_sequence(sequence_id, ):
+@app.route('/save_sequence', methods = ['POST'])
+def save_sequence():
+    data = request.get_json()
     if request.method == 'POST':
-        sequence = GetSequence(sequence_id)
-        SaveSequence(sequences, )
+        sequence_id = data.get('sequence_id')
+        name = data.get('name')
+        sequences = GetPendingSequence(data.get('sequence_id'))
+        SaveSequence(sequences[0], name)
+        return jsonify({'status': '200'})
 
 
 
